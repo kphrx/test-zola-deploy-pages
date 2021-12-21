@@ -15,10 +15,10 @@ jobs:
         env:
           BUILD_DIR: .
           BUILD_ONLY: true
-      - uses: actions/upload-artifact@v2
+      - uses: alehechka/upload-tartifact@v1
         with:
           name: github-pages
-          path: public/
+          path: -C public .
   deploy:
     needs: build
     runs-on: ubuntu-latest
