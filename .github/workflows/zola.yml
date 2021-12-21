@@ -22,6 +22,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment: github-pages
     permissions:
       id-token: 'write'
       pages: 'write'
