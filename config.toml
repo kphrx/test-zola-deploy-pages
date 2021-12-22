@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://example.com"
+base_url = "https://github.kpherox.dev/test-zola-deploy-pages"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -11,6 +11,9 @@ build_search_index = false
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = false
+
+[languages]
+[languages.ja]
 
 [extra]
 # Put all your custom variables here

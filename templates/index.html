@@ -1,0 +1,43 @@
+{% import "macros.html" as macros %}
+
+<!doctype html>
+<html lang="{{ lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <title>kphrx/test-zola-deploy-pages</title>
+  <style>
+section > h1::before {
+  content: '#';
+  padding-right: .5rem;
+}
+h1 {
+  margin-bottom: 0;
+}
+p, ul, pre {
+  margin-top: 0;
+}
+.languages {
+  display: inline-flex;
+  list-style: none;
+}
+.languages > li:not(:first-child)::before {
+  content: '|';
+  padding: 0 5px;
+}
+  </style>
+</head>
+
+<body>
+  <h1>{{ section.title }}</h1>
+  <ul class="languages">
+    {% for translation in section.translations | sort(attribute="permalink") %}
+    <li>{{ macros::langLink(language=translation.lang, permalink=translation.permalink) | trim | safe }}</li>
+    {% endfor %}
+  </ul>
+  <section class="section">
+    {{ section.content | safe }}
+  </section>
+</body>
+
+</html>

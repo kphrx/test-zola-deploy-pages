@@ -1,0 +1,7 @@
+{% macro langLink(language, permalink) %}
+{% if language == lang %}
+  {{ lang }}
+{% else %}
+  <a href="{{ permalink | safe }}">{{ language }}</a>
+{% endif %}
+{% endmacro langLink %}
