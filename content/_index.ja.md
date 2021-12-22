@@ -11,7 +11,7 @@ title = "About this"
 - OIDC tokenが必要。`permissions.id-token`の書き込み権限を追加する。
 - Pagesをデプロイするので当然 `permissions.pages`の書き込み権限が必要。
 - `github-pages` environmentのprotection ruleにソースブランチを追加する。
-- アップロードするartifactは`artifact.tar`でなければならない。`alehechka/upload-tartifact`で`artifact.tar`を作れるが`action/upload-artifact`と違い`path`はglobが機能しないので`tar`のオプションを設定する。
+- アップロードするartifactは`artifact.tar`でなければならない。[`alehechka/upload-tartifact`](https://github.com/alehechka/upload-tartifact)で`artifact.tar`を作れるが[`action/upload-artifact`](https://github.com/action/upload-artifact)と違い`path`はglobが機能しないので`tar`のオプションを設定する。
 
 # ワークフローファイルの例
 

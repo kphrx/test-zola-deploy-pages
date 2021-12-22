@@ -11,7 +11,7 @@ This is a test of using [`actions/deploy-pages`](https://github.com/actions/depl
 - Add write permission to `permissions.id-token` for the OIDC token.
 - Deploying Pages of course requires write permission to `permissions.pages`.
 - Add source branch to the protection rule of `github-pages` environment.
-- The artifact you upload **must** be in `artifact.tar`. You can also create and upload an `artifact.tar` by `alehechka/upload-tartifact`,  but unlike `path` in `action/upload-artifact`, globbing does not work, so you need to set it with the option of `tar`.
+- The artifact you upload **must** be in `artifact.tar`. You can also create and upload an `artifact.tar` by [`alehechka/upload-tartifact`](https://github.com/alehechka/upload-tartifact),  but unlike `path` in [`action/upload-artifact`](https://github.com/action/upload-artifact), globbing does not work, so you need to set it with the option of `tar`.
 
 # Example workflow file
 
