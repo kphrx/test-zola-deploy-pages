@@ -5,6 +5,9 @@
 
 <head>
   <meta charset="utf-8">
+  {% for t9n in section.translations %}
+  <link rel="alternate" title="{{ t9n.title | safe }}" href="{{ t9n.permalink | safe }}" hreflang="{{ t9n.lang | safe }}">
+  {% endfor %}
   <title>kphrx/test-zola-deploy-pages</title>
   <style>
 section > h1::before {
@@ -31,8 +34,8 @@ p, ul, pre {
 <body>
   <h1>{{ section.title }}</h1>
   <ul class="languages">
-    {% for translation in section.translations | sort(attribute="permalink") %}
-    <li>{{ macros::langLink(language=translation.lang, permalink=translation.permalink) | trim | safe }}</li>
+    {% for t9n in section.translations | sort(attribute="permalink") %}
+    <li>{{ macros::langLink(translation=t9n) | trim | safe }}</li>
     {% endfor %}
   </ul>
   <section class="section">
