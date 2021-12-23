@@ -11,7 +11,7 @@ title = "About this"
 - OIDC tokenが必要。`permissions.id-token`の書き込み権限を追加する。
 - Pagesをデプロイするので当然 `permissions.pages`の書き込み権限が必要。
 - `github-pages` environmentのprotection ruleにソースブランチを追加する。
-- アップロードするartifactは`artifact.tar`でなければならない。[`alehechka/upload-tartifact`](https://github.com/alehechka/upload-tartifact)で`artifact.tar`を作れるが[`action/upload-artifact`](https://github.com/action/upload-artifact)と違い`path`はglobが機能しないので`tar`のオプションを設定する。
+- アップロードするartifactは`artifact.tar`でなければならない。~~[`alehechka/upload-tartifact`](https://github.com/alehechka/upload-tartifact)で`artifact.tar`を作れるが[`action/upload-artifact`](https://github.com/action/upload-artifact)と違い`path`はglobが機能しないので`tar`のオプションを設定する。~~ *[actions/upload-artifact #Maintaining file permissions and case sensitive files](https://github.com/actions/upload-artifact#maintaining-file-permissions-and-case-sensitive-files)* でtarを作ってアップロードする方法が書かれているので参考にする
 
 # ワークフローファイルの例
 
@@ -29,10 +29,13 @@ jobs:
         env:
           BUILD_DIR: .
           BUILD_ONLY: true
-      - uses: alehechka/upload-tartifact@v1
+      - name: Tar files
+        run: tar -cvf artifact.tar -C public .
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
         with:
           name: github-pages
-          path: -C public .
+          path: artifact.tar
 
   deploy:
     needs: build
