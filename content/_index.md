@@ -40,24 +40,14 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.pages.outputs.result }}
     permissions:
       id-token: 'write'
       pages: 'write'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: 'Pages Info'
-        id: pages
-        uses: actions/github-script@v5
-        with:
-          result-encoding: string
-          script: |
-            const pages = await github.rest.repos.getPages({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            });
-            return pages.data.html_url;
       - name: 'Deploy'
+        id: deployment
         uses: actions/deploy-pages@v1-beta
 ```
