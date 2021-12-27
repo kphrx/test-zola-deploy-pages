@@ -1,9 +1,11 @@
 name: Zola Deploy
 
 on:
+  workflow_call:
   push:
     branches:
       - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
